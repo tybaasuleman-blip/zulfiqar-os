@@ -51,6 +51,14 @@ async def run_task(command: str):
 @app.websocket("/ws/{channel}")
 async def websocket_endpoint(websocket: WebSocket, channel: str):
     await manager.connect(websocket, channel)
+
+    import os
+import uvicorn
+
+# This block ensures the app reads the port from Railway
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
     try:
         while True:
             await websocket.receive_text()
