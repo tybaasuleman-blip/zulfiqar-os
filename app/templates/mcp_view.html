@@ -1,0 +1,5 @@
+<!DOCTYPE html><html><body class="bg-black text-blue-400 font-mono p-4"><div id="l"></div>
+<script>
+    const ws = new WebSocket(`ws://${window.location.host}/ws/mcp`);
+    ws.onmessage = (e) => { document.getElementById('l').innerHTML += `<div>[EXEC] ${e.data}</div>`; };
+</script></body></html>

@@ -1,0 +1,5 @@
+<!DOCTYPE html><html><body class="bg-black text-green-500 font-mono p-4"><div id="l"></div>
+<script>
+    const ws = new WebSocket(`ws://${window.location.host}/ws/agent`);
+    ws.onmessage = (e) => { document.getElementById('l').innerHTML += `<div>> ${e.data}</div>`; };
+</script></body></html>
